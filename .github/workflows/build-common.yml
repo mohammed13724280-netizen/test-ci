@@ -19,7 +19,7 @@ on:
       repo:
         required: true
       ssh_key:
-        required: false
+        required: true
       chat_id:
         required: false
       TELEGRAM_BOT_TOKEN:
