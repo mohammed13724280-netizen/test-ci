@@ -21,11 +21,11 @@ on:
       ssh_key:
         required: true
       chat_id:
-        required: true
+        required: false
       TELEGRAM_BOT_TOKEN:
-        required: true
+        required: false
       TELEGRAM_SAVE_FILE:
-        required: true
+        required: false
 
 jobs:
   prepare-toolchain:
