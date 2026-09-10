@@ -17,9 +17,9 @@ on:
         type: boolean
     secrets:
       repo:
-        required: true
+        required: false
       ssh_key:
-        required: true
+        required: false
       chat_id:
         required: false
       TELEGRAM_BOT_TOKEN:
@@ -63,7 +63,7 @@ jobs:
           - ksu: ""
             susfs: _susfs
           - ksu: _resukisu
-            susfs: _susfs
+            susfs: ""
           - ksu: _ksuFork
             susfs: _susfs
           - ksu: _ksunV3
