@@ -17,7 +17,7 @@ on:
         type: boolean
     secrets:
       repo:
-        required: false
+        required: true
       ssh_key:
         required: false
       chat_id:
@@ -247,33 +247,3 @@ jobs:
           cd AnyKernel3
           zip -r "$NAME.zip" ./*
 
-          SHA256=$(sha256sum "$NAME.zip" | awk '{print $1}')
-          SHORT_SHA=${SHA256:0:8}
-
-          NEW_NAME="${NAME}-${SHORT_SHA}.zip"
-          mv "$NAME.zip" "$NEW_NAME"
-
-          curl -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendDocument" \
-            -F chat_id=${{ secrets.chat_id }} \
-            -F document=@$NEW_NAME -o response.json
-
-          cat > payload.json <<EOF
-          {
-            "response": $(cat response.json),
-            "sha256": "$SHA256"
-          }
-          EOF
-
-          curl -X POST "${{ secrets.TELEGRAM_SAVE_FILE }}" \
-            -H "Content-Type: application/json" \
-            -d @payload.json
-
-          rm $NEW_NAME
-          rm *.json
-
-      - name: Upload Artifact
-        if: vars.POST_FILE == 'true'
-        uses: actions/upload-artifact@v7
-        with:
-          name: ${{ env.NAME }}
-          path: repo/AnyKernel3
