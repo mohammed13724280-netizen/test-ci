@@ -158,7 +158,7 @@ jobs:
               git clone --depth=1 -b v1.1.1-susfs1.5.11 https://github.com/longuirom/KernelSU-Next KernelSU
               ;;
             "_ksuFork_")
-              git clone --depth=1 -b 32567b https://github.com/longuirom/KernelSU KernelSU
+              git clone --depth=1 -b fork https://github.com/longuirom/KernelSU KernelSU
               ;;
             "_ksunV3_")
               git clone --depth=1 -b legacy https://github.com/longuirom/KernelSU-Next KernelSU
